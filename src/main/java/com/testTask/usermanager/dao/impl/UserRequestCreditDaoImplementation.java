@@ -44,7 +44,7 @@ public class UserRequestCreditDaoImplementation implements UserRequestCreditDao 
         } catch (Exception e) {
             return new ArrayList<>();
         }
-    } //сделано
+    }
 
     @Override
     public UserRequestCredit getUserById(Long id) {
@@ -67,5 +67,6 @@ public class UserRequestCreditDaoImplementation implements UserRequestCreditDao 
             session.getTransaction().commit();
         }
         session.close();
+        logger.info("User successfully loaded. User details: " + userRequestCredit);
     }
 }

@@ -5,11 +5,11 @@ import com.testTask.usermanager.model.UserRequestCredit;
 import java.util.List;
 
 public interface UserRequestCreditService {
-    void addUserRequest(UserRequestCredit userRequestCredit); //Добавление данных от пользователя
+    void addUserRequest(UserRequestCredit userRequestCredit);
 
-    void removeUserRequest(int id); // удаление данных пользователя
+    UserRequestCredit getUserById(Long id);
 
-    UserRequestCredit getUserById(int id); // получение пользователя по id
+    List<UserRequestCredit> getListAllUser();
 
-    List<UserRequestCredit> listUser(); // получение всех пользователей
+    void signCredit(UserRequestCredit userRequestCredit);
 }

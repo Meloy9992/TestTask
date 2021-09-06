@@ -5,17 +5,12 @@ import com.testTask.usermanager.dao.UserRequestCreditDao;
 import com.testTask.usermanager.model.ApproveCredit;
 import com.testTask.usermanager.model.UserRequestCredit;
 import com.testTask.usermanager.service.ApproveCreditService;
-import com.testTask.utils.HibernateUtil;
-import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class ApproveCreditServiceImplementation implements ApproveCreditService {
@@ -34,18 +29,22 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
     }
 
     @Override
-    public List<UserRequestCredit> sortedByStatusAccept() {
-        return approveCreditDao.
+    public List<ApproveCredit> getUserByAcceptRequest() {
+        return approveCreditDao.getUserByAcceptRequest();
     }
 
     @Override
-    public List<UserRequestCredit> outputAllSignedRequest() {
-        return ;
+    public List<ApproveCredit> getUserBySignedCredit() {
+        return approveCreditDao.getUserBySignedCredit();
     }
 
+    @Override
+    public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int userCreditAmount) {
+        return approveCreditDao.createApproveCredit(userRequestCredit, userCreditAmount);
+    }
 
     @Override
-    public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int  userCreditAmount){
-      return approveCreditDao.createApproveCredit(userRequestCredit, userCreditAmount);
+    public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {
+        return approveCreditDao.searchCreditsByPhoneByFullNameByPassportData(contactNumber, passportData, fullName);
     }
 }

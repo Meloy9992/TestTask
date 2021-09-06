@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -18,4 +18,7 @@
         <div> Сведения о занятости <h5 th:text="${element.employmentInformation}"></h5></div>
         <div> Сумма желаемого кредита <h5 th:text="${element.userCreditAmount}"></h5></div>
     </div>
-</div >
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

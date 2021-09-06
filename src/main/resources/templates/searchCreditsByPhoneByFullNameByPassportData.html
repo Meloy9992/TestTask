@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -12,7 +12,8 @@
     <form class="needs-validation" novalidate="" action="/searchCreditsByPhoneByFullNameByPassportData" method="post">
         <div class="col-12">
             <label for="contactNumber" class="form-label">Поиск по телефону</label>
-            <input name="contactNumber" required="" id="contactNumber" type="text" class="input-medium bfh-phone" placeholder="+7 (ddd) ddd-dd-dd">
+            <input name="contactNumber" required="" id="contactNumber" type="text" class="input-medium bfh-phone"
+                   placeholder="+7 (ddd) ddd-dd-dd">
         </div>
 
         <div class="col-sm-12">
@@ -23,20 +24,24 @@
         <div class="col-12">
             <label for="passportData" class="form-label">Поиск по Паспортным данным</label>
             <div class="input-group has-validation">
-                <input name="passportData" type="text" class="form-control" id="passportData" placeholder="00 00 000000" required="">
+                <input name="passportData" type="text" class="form-control" id="passportData" placeholder="00 00 000000"
+                       required="">
             </div>
         </div>
         <button class="w-100 btn btn-success btn-lg" type="submit">Поиск</button>
     </form>
 
-    <div class="d-flex gap-5 justify-content-center">
-        <div th:each="element : ${search}" class="alert alert-info mt-2">
-            <div> ФИО <h5 th:text="${element.fullName}"></h5></div>
-            <div> Номер паспорта <h5 th:text="${element.passportData}"></h5></div>
-            <div> Адрес  <h5 th:text="${element.address}"></h5></div>
-            <div> Семейное положение <h5 th:text="${element.maritalStatus}"></h5></div>
-            <div> Номер телефона <h5 th:text="${element.contactNumber}"></h5></div>
-            <div> Сведения о занятости <h5 th:text="${element.employmentInformation}"></h5></div>
-            <div> Сумма желаемого кредита <h5 th:text="${element.userCreditAmount}"></h5></div>
-        </div>
+
+    <div th:each="element : ${search}" class="alert alert-info mt-2">
+        <div> ФИО <h5 th:text="${element.fullName}"></h5></div>
+        <div> Номер паспорта <h5 th:text="${element.passportData}"></h5></div>
+        <div> Адрес <h5 th:text="${element.address}"></h5></div>
+        <div> Семейное положение <h5 th:text="${element.maritalStatus}"></h5></div>
+        <div> Номер телефона <h5 th:text="${element.contactNumber}"></h5></div>
+        <div> Сведения о занятости <h5 th:text="${element.employmentInformation}"></h5></div>
+        <div> Сумма желаемого кредита <h5 th:text="${element.userCreditAmount}"></h5></div>
     </div>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

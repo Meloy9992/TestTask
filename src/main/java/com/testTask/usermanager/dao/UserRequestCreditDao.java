@@ -5,12 +5,11 @@ import com.testTask.usermanager.model.UserRequestCredit;
 import java.util.List;
 
 public interface UserRequestCreditDao {
-    void addUserRequest(UserRequestCredit userRequestCredit); //Добавление данных от пользователя
+    void addUserRequest(UserRequestCredit userRequestCredit);
 
     List<UserRequestCredit> getListAllUser();
 
     UserRequestCredit getUserById(Long id);
 
     void signCredit(UserRequestCredit userRequestCredit);
-
 }

@@ -5,7 +5,10 @@ import com.testTask.usermanager.dao.UserRequestCreditDao;
 import com.testTask.usermanager.model.ApproveCredit;
 import com.testTask.usermanager.model.UserRequestCredit;
 import com.testTask.utils.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -56,4 +59,21 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
         session.close();
         return approveCreditList;
     }
+
+    @Override
+    public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {
+        Criteria criteria = getSessionFactory().openSession().createCriteria(UserRequestCredit.class);
+
+        if (contactNumber != null && !contactNumber.equals("")) {
+            criteria.add(Restrictions.eq("contactNumber", Integer.parseInt(contactNumber)));
+        }
+        if (passportData != null && !passportData.equals("")) {
+            criteria.add(Restrictions.like("passportData", Integer.parseInt(passportData)));
+        }
+        if (fullName != null && !fullName.equals("")) {
+            criteria.add(Restrictions.like("fullName", fullName, MatchMode.START));
+        }
+        return criteria.list();
+    }
 }
+

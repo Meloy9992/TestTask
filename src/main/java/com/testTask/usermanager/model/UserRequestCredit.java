@@ -33,11 +33,7 @@ public class UserRequestCredit {
     @Column(name = "user_credit_amount")
     private int userCreditAmount;
 
-    @Column(name = "permission_credit")
-    private boolean permissionCredit;
-
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "approve_credit")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userRequestCredit")
     private List<ApproveCredit> approveCredits;
 
 
@@ -114,10 +110,8 @@ public class UserRequestCredit {
     }
 
 
-
     public UserRequestCredit() {
     }
-
 
     public UserRequestCredit(String fullName, int passportData, String maritalStatus,
                              String address, int contactNumber, String employmentInformation, int userCreditAmount) {
@@ -128,9 +122,6 @@ public class UserRequestCredit {
         this.contactNumber = contactNumber;
         this.employmentInformation = employmentInformation;
         this.userCreditAmount = userCreditAmount;
-    }
-
-    public UserRequestCredit() {
     }
 
     @Override
@@ -144,7 +135,7 @@ public class UserRequestCredit {
                 ", contactNumber=" + contactNumber +
                 ", employmentInformation='" + employmentInformation + '\'' +
                 ", userCreditAmount=" + userCreditAmount +
-                ", permissionCredit=" + permissionCredit +
+                ", approveCredits=" + approveCredits +
                 '}';
     }
 }

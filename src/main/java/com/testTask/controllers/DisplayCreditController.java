@@ -1,15 +1,10 @@
 package com.testTask.controllers;
 
 
-import com.testTask.usermanager.dao.ApproveCreditDao;
-import com.testTask.usermanager.dao.UserRequestCreditDao;
 import com.testTask.usermanager.model.ApproveCredit;
 import com.testTask.usermanager.model.UserRequestCredit;
 import com.testTask.usermanager.service.ApproveCreditService;
 import com.testTask.usermanager.service.UserRequestCreditService;
-import org.hibernate.*;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.List;
-
-import static com.testTask.utils.HibernateUtil.getSessionFactory;
 
 @Controller
 public class DisplayCreditController {
@@ -48,47 +41,34 @@ public class DisplayCreditController {
     @PostMapping("/searchCreditsByPhoneByFullNameByPassportData")
     public String searchCreditsByPhoneByFullNameByPassportData(@RequestParam String contactNumber,
                                                                @RequestParam String passportData, Model model, @RequestParam String fullName) {
-        //dao
-        Criteria criteria = getSessionFactory().openSession().createCriteria(UserRequestCredit.class);
 
-        if (contactNumber != null && !contactNumber.equals("")) {
-            criteria.add(Restrictions.eq("contactNumber", Integer.parseInt(contactNumber)));
-        }
-        if (passportData != null && !passportData.equals("")) {
-            criteria.add(Restrictions.like("passportData", Integer.parseInt(passportData)));
-        }
-        if (fullName != null && !fullName.equals("")) {
-            criteria.add(Restrictions.like("fullName", fullName, MatchMode.START));
-        }
-
-        model.addAttribute("search", criteria.list());
+        model.addAttribute("search", approveCreditService.searchCreditsByPhoneByFullNameByPassportData(contactNumber, passportData, fullName));
         return "searchCreditsByPhoneByFullNameByPassportData";
     }
 
     @GetMapping("/userById")
     public String displayUser(@RequestParam Long id, Model model) {
         UserRequestCredit userRequestCredit = userRequestCreditService.getUserById(id);
-      //  userRequestCreditDao.signCredit(userRequestCredit);
         model.addAttribute("users", userRequestCredit);
         return "usersById";
     }
 
     @GetMapping("/signCredit")
-    public String displayUser(@RequestParam Long id){
+    public String displayUser(@RequestParam Long id) {
         UserRequestCredit userRequestCredit = userRequestCreditService.getUserById(id);
         userRequestCreditService.signCredit(userRequestCredit);
         return "redirect:/userById?id=" + id;
     }
 
     @GetMapping("/userByAcceptRequest")
-    public String displayUserByAcceptRequest(Model model){
+    public String displayUserByAcceptRequest(Model model) {
         List<ApproveCredit> approveCreditList = approveCreditService.getUserByAcceptRequest();
         model.addAttribute("acceptRequest", approveCreditList);
         return "userByAcceptRequest";
     }
 
     @GetMapping("/userBySignedCredit")
-    public String displayUserBySignedCredit(Model model){
+    public String displayUserBySignedCredit(Model model) {
         List<ApproveCredit> approveCreditList = approveCreditService.getUserBySignedCredit();
         model.addAttribute("signedCredit", approveCreditList);
         return "userBySignedCredit";

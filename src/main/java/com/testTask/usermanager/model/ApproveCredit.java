@@ -17,6 +17,15 @@ public class ApproveCredit {
     @JoinColumn(name = "id_request_users")
     private UserRequestCredit userRequestCredit;
 
+    @Column(name = "status_approved_application")
+    private boolean statusApprovedApplication;
+
+    @Column(name = "offer_term")
+    private int offerTerm;
+
+    @Column(name = "approve_credit_sum")
+    private int approveCreditSum;
+
     @Column(name = "approve_credit_date")
     private Date approveCreditDate;
 
@@ -47,7 +56,6 @@ public class ApproveCredit {
         this.approveCreditSum = approveCreditSum;
     }
 
-
     public UserRequestCredit getUserRequestCredit() {
         return userRequestCredit;
     }
@@ -75,16 +83,15 @@ public class ApproveCredit {
     public ApproveCredit() {
     }
 
-    public ApproveCredit(UserRequestCredit userRequestCredit, Date approveCreditDate, boolean signatureStatus) {
+    public ApproveCredit(UserRequestCredit userRequestCredit, boolean statusApprovedApplication, int offerTerm, int approveCreditSum, Date approveCreditDate, boolean signatureStatus) {
         this.userRequestCredit = userRequestCredit;
         this.statusApprovedApplication = statusApprovedApplication;
 
-
-        if (statusApprovedApplication == false) {
+        if (!statusApprovedApplication) {
             this.offerTerm = 0;
             this.approveCreditSum = 0;
             this.approveCreditDate = new Date(0);
-            this.signatureStatus = statusApprovedApplication;
+            this.signatureStatus = false;
         } else {
             this.offerTerm = offerTerm;
             this.approveCreditSum = approveCreditSum;
