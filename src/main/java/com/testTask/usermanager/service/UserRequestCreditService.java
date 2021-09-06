@@ -7,9 +7,9 @@ import java.util.List;
 public interface UserRequestCreditService {
     void addUserRequest(UserRequestCredit userRequestCredit); //Добавление данных от пользователя
 
-    List<UserRequestCredit> getListAllUser();
+    void removeUserRequest(int id); // удаление данных пользователя
 
-    UserRequestCredit getUserById(Long id);
+    UserRequestCredit getUserById(int id); // получение пользователя по id
 
-    void signCredit(UserRequestCredit userRequestCredit);
+    List<UserRequestCredit> listUser(); // получение всех пользователей
 }

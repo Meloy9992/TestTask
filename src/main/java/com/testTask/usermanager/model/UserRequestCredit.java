@@ -7,14 +7,6 @@ import java.util.List;
 @Table(name = "request_users")
 public class UserRequestCredit {
 
-    public Long getIdRequestUsers() {
-        return idRequestUsers;
-    }
-
-    public void setIdRequestUsers(Long idRequestUsers) {
-        this.idRequestUsers = idRequestUsers;
-    }
-
     @Id
     @Column(name = "id_request_users")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,8 +33,21 @@ public class UserRequestCredit {
     @Column(name = "user_credit_amount")
     private int userCreditAmount;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userRequestCredit")
+    @Column(name = "permission_credit")
+    private boolean permissionCredit;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "approve_credit")
     private List<ApproveCredit> approveCredits;
+
+
+    public Long getIdRequestUsers() {
+        return idRequestUsers;
+    }
+
+    public void setIdRequestUsers(Long idRequestUsers) {
+        this.idRequestUsers = idRequestUsers;
+    }
 
     public String getFullName() {
         return fullName;
@@ -109,10 +114,13 @@ public class UserRequestCredit {
     }
 
 
+
     public UserRequestCredit() {
     }
 
-    public UserRequestCredit(String fullName, int passportData, String maritalStatus, String address, int contactNumber, String employmentInformation, int userCreditAmount) {
+
+    public UserRequestCredit(String fullName, int passportData, String maritalStatus,
+                             String address, int contactNumber, String employmentInformation, int userCreditAmount) {
         this.fullName = fullName;
         this.passportData = passportData;
         this.maritalStatus = maritalStatus;
@@ -120,5 +128,23 @@ public class UserRequestCredit {
         this.contactNumber = contactNumber;
         this.employmentInformation = employmentInformation;
         this.userCreditAmount = userCreditAmount;
+    }
+
+    public UserRequestCredit() {
+    }
+
+    @Override
+    public String toString() {
+        return "UserRequestCredit{" +
+                "idRequestUsers=" + idRequestUsers +
+                ", fullName='" + fullName + '\'' +
+                ", passportData=" + passportData +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", address='" + address + '\'' +
+                ", contactNumber=" + contactNumber +
+                ", employmentInformation='" + employmentInformation + '\'' +
+                ", userCreditAmount=" + userCreditAmount +
+                ", permissionCredit=" + permissionCredit +
+                '}';
     }
 }
