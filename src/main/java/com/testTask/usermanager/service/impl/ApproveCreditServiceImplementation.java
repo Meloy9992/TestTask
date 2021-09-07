@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Implementation service approve credit
+ * Service approve credit data processing
  */
 @Service
 public class ApproveCreditServiceImplementation implements ApproveCreditService {
@@ -25,9 +25,8 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
     }
 
     /**
-     * Add approved credit from Data Base
+     * Add approved credit
      *
-     * @param approveCredit
      */
     @Override
     public void addApproveCredit(ApproveCredit approveCredit) {

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Implementation service user request credit
+ * Service user request credit data processing
  */
 @Service
 public class UserRequestCreditServiceImplementation implements UserRequestCreditService {
@@ -26,9 +26,8 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
     }
 
     /**
-     * Add user Request from Data Base
+     * Add user Request
      *
-     * @param userRequestCredit
      */
     @Override
     public void addUserRequest(UserRequestCredit userRequestCredit) {
@@ -36,7 +35,7 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
     }
 
     /**
-     * Get one user by Id from Data Base
+     * Get one user by Id
      *
      * @param id
      * @return one user by id
@@ -49,7 +48,7 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
     /**
      * Get List User Request Credit
      *
-     * @return all users from Data Base
+     * @return all users
      */
     @Override
     public List<UserRequestCredit> getListAllUser() {
