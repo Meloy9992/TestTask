@@ -35,12 +35,8 @@ public class MainController {
                                     @RequestParam String address, @RequestParam int contactNumber, @RequestParam String employmentInformation,
                                     @RequestParam int userCreditAmount) {
 
-        UserRequestCredit userRequestCredit = new UserRequestCredit(fullName, passportData,
-                maritalStatus, address, contactNumber, employmentInformation, userCreditAmount);
-
-        userRequestCreditService.addUserRequest(userRequestCredit);
-        ApproveCredit approveCredit = approveCreditService.createApproveCredit(userRequestCredit, userCreditAmount);
-        approveCreditService.addApproveCredit(approveCredit);
+        userRequestCreditService.createRequestCredit(fullName, passportData, maritalStatus,
+                address, contactNumber,employmentInformation,userCreditAmount);
         return "redirect:/displayAllCredit";
     }
 }

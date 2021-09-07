@@ -12,4 +12,8 @@ public interface UserRequestCreditService {
     List<UserRequestCredit> getListAllUser();
 
     void signCredit(UserRequestCredit userRequestCredit);
+
+    void createRequestCredit(String fullName, int passportData, String maritalStatus,
+                             String address, int contactNumber, String employmentInformation,
+                             int userCreditAmount);
 }
