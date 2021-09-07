@@ -1,7 +1,5 @@
 package com.testTask.controllers;
 
-import com.testTask.usermanager.model.ApproveCredit;
-import com.testTask.usermanager.model.UserRequestCredit;
 import com.testTask.usermanager.service.ApproveCreditService;
 import com.testTask.usermanager.service.UserRequestCreditService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,7 @@ public class MainController {
                                     @RequestParam int userCreditAmount) {
 
         userRequestCreditService.createRequestCredit(fullName, passportData, maritalStatus,
-                address, contactNumber,employmentInformation,userCreditAmount);
+                address, contactNumber, employmentInformation, userCreditAmount);
         return "redirect:/displayAllCredit";
     }
 }

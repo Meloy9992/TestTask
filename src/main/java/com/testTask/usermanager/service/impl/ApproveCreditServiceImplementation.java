@@ -14,35 +14,63 @@ import java.util.List;
 
 @Service
 public class ApproveCreditServiceImplementation implements ApproveCreditService {
-    private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
+    private ApproveCreditDao approveCreditDao;
 
     @Autowired
     public ApproveCreditServiceImplementation(ApproveCreditDao approveCreditDao) {
         this.approveCreditDao = approveCreditDao;
     }
 
-    private ApproveCreditDao approveCreditDao;
-
+    /**
+     * Add approved credit from Data Base
+     *
+     * @param approveCredit
+     */
     @Override
     public void addApproveCredit(ApproveCredit approveCredit) {
         approveCreditDao.addApproveCredit(approveCredit);
     }
 
+    /**
+     * Get List user by Accept Request
+     *
+     * @return List Approve Credit
+     */
     @Override
     public List<ApproveCredit> getUserByAcceptRequest() {
         return approveCreditDao.getUserByAcceptRequest();
     }
 
+    /**
+     * Get List user by Signed Credit
+     *
+     * @return List Approve Credit
+     */
     @Override
     public List<ApproveCredit> getUserBySignedCredit() {
         return approveCreditDao.getUserBySignedCredit();
     }
 
+    /**
+     * Create Approve Credit by User and User Credit Amount
+     *
+     * @param userRequestCredit User
+     * @param userCreditAmount  The credit amount the user is asking
+     * @return Approve Credit
+     */
     @Override
     public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int userCreditAmount) {
         return approveCreditDao.createApproveCredit(userRequestCredit, userCreditAmount);
     }
 
+    /**
+     * search credit by phone or by full name or by passport data
+     *
+     * @param contactNumber
+     * @param passportData
+     * @param fullName
+     * @return
+     */
     @Override
     public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {
         return approveCreditDao.searchCreditsByPhoneByFullNameByPassportData(contactNumber, passportData, fullName);

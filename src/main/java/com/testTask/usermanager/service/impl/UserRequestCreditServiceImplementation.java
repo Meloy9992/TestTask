@@ -22,26 +22,58 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
         this.approveCreditService = approveCreditService;
     }
 
+    /**
+     * Add user Request from Data Base
+     *
+     * @param userRequestCredit
+     */
     @Override
     public void addUserRequest(UserRequestCredit userRequestCredit) {
         userRequestCreditDao.addUserRequest(userRequestCredit);
     }
 
+    /**
+     * Get one user by Id from Data Base
+     *
+     * @param id
+     * @return UserRequestCredit
+     */
     @Override
     public UserRequestCredit getUserById(Long id) {
         return userRequestCreditDao.getUserById(id);
     }
 
+    /**
+     * Get List User Request Credit
+     *
+     * @return
+     */
     @Override
     public List<UserRequestCredit> getListAllUser() {
         return userRequestCreditDao.getListAllUser();
     }
 
+    /**
+     * Changes the one user's signing credit status
+     *
+     * @param userRequestCredit
+     */
     @Override
     public void signCredit(UserRequestCredit userRequestCredit) {
         userRequestCreditDao.signCredit(userRequestCredit);
     }
 
+    /**
+     * Create request User with parameters
+     *
+     * @param fullName
+     * @param passportData
+     * @param maritalStatus
+     * @param address
+     * @param contactNumber
+     * @param employmentInformation
+     * @param userCreditAmount
+     */
     @Override
     public void createRequestCredit(String fullName, int passportData, String maritalStatus, String address, int contactNumber, String employmentInformation, int userCreditAmount) {
         UserRequestCredit userRequestCredit = new UserRequestCredit(fullName, passportData,

@@ -23,6 +23,11 @@ import static com.testTask.utils.HibernateUtil.getSessionFactory;
 public class ApproveCreditDaoImplementation implements ApproveCreditDao {
     private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
 
+    /**
+     * Add approved credit
+     *
+     * @param approveCredit
+     */
     @Override
     public void addApproveCredit(ApproveCredit approveCredit) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -33,6 +38,18 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
         logger.info("Approve credit was create: " + approveCredit);
     }
 
+    /**
+     * Create Approve Credit by Current Date,
+     * Random percent,
+     * Random status approved Request,
+     * Random accept number of days 0 - 365,
+     * Random approve Credit by Random percent,
+     * and default signature Status = false
+     *
+     * @param userRequestCredit User
+     * @param userCreditAmount  The credit amount the user is asking
+     * @return Create Approve Credit by User
+     */
     @Override
     public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int userCreditAmount) {
         Date date = new Date();
@@ -42,6 +59,11 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
                 random.nextInt(365), random.nextInt((int) (userCreditAmount - percent)), date, false);
     }
 
+    /**
+     * Get List user by Accept Request from Data Base with createQuery
+     *
+     * @return List Approve Credit
+     */
     @Override
     public List<ApproveCredit> getUserByAcceptRequest() {
         Session session = getSessionFactory().openSession();
@@ -51,6 +73,11 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
         return approveCreditList;
     }
 
+    /**
+     * Get List user by Signed Credit from Data Base with createQuery
+     *
+     * @return List Approve Credit
+     */
     @Override
     public List<ApproveCredit> getUserBySignedCredit() {
         Session session = getSessionFactory().openSession();
@@ -60,6 +87,15 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
         return approveCreditList;
     }
 
+    /**
+     * Search credit by phone or by full name or by passport data
+     * full name can be introduced partially
+     *
+     * @param contactNumber
+     * @param passportData
+     * @param fullName
+     * @return List UserRequestCredit
+     */
     @Override
     public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {
         Criteria criteria = getSessionFactory().openSession().createCriteria(UserRequestCredit.class);
