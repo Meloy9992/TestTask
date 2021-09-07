@@ -20,16 +20,15 @@ import java.util.Random;
 import static com.testTask.utils.HibernateUtil.getSessionFactory;
 
 /**
- * Implementation approve credit and putting it into the database
+ * Data access approve credit
  */
 @Repository
     public class ApproveCreditDaoImplementation implements ApproveCreditDao {
     private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
 
     /**
-     * Add approved credit
+     * Save approved credit into data base
      *
-     * @param approveCredit
      */
     @Override
     public void addApproveCredit(ApproveCredit approveCredit) {

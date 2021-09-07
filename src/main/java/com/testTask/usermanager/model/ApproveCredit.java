@@ -2,7 +2,6 @@ package com.testTask.usermanager.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Random;
 
 @Entity
 @Table(name = "approve_credit")

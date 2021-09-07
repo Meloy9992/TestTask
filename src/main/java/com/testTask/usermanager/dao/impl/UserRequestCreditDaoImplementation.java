@@ -15,16 +15,15 @@ import java.util.List;
 import static com.testTask.utils.HibernateUtil.getSessionFactory;
 
 /**
- * Implementation user request credit and putting it into the database
+ * Data access user request
  */
 @Repository
 public class UserRequestCreditDaoImplementation implements UserRequestCreditDao {
     private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
 
     /**
-     * Add user Request from Data Base
+     * Save user request into data base
      *
-     * @param userRequestCredit
      */
     @Override
     public void addUserRequest(UserRequestCredit userRequestCredit) {
