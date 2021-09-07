@@ -3,6 +3,9 @@ package com.testTask.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Create session factory
+ */
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = getCurrentSessionFromConfig();

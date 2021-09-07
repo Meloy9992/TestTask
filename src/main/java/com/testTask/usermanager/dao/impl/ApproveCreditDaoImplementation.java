@@ -19,8 +19,11 @@ import java.util.Random;
 
 import static com.testTask.utils.HibernateUtil.getSessionFactory;
 
+/**
+ * Implementation approve credit and putting it into the database
+ */
 @Repository
-public class ApproveCreditDaoImplementation implements ApproveCreditDao {
+    public class ApproveCreditDaoImplementation implements ApproveCreditDao {
     private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
 
     /**
@@ -48,7 +51,7 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
      *
      * @param userRequestCredit User
      * @param userCreditAmount  The credit amount the user is asking
-     * @return Create Approve Credit by User
+     * @return Approve Credit with random values
      */
     @Override
     public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int userCreditAmount) {
@@ -62,7 +65,7 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
     /**
      * Get List user by Accept Request from Data Base with createQuery
      *
-     * @return List Approve Credit
+     * @return users who have accept request
      */
     @Override
     public List<ApproveCredit> getUserByAcceptRequest() {
@@ -76,7 +79,7 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
     /**
      * Get List user by Signed Credit from Data Base with createQuery
      *
-     * @return List Approve Credit
+     * @return users who have signed credit
      */
     @Override
     public List<ApproveCredit> getUserBySignedCredit() {
@@ -94,7 +97,7 @@ public class ApproveCreditDaoImplementation implements ApproveCreditDao {
      * @param contactNumber
      * @param passportData
      * @param fullName
-     * @return List UserRequestCredit
+     * @return users with matches or the entire list of users if there are no values
      */
     @Override
     public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {

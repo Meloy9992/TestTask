@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementation service approve credit
+ */
 @Service
 public class ApproveCreditServiceImplementation implements ApproveCreditService {
     private ApproveCreditDao approveCreditDao;
@@ -34,7 +37,7 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
     /**
      * Get List user by Accept Request
      *
-     * @return List Approve Credit
+     * @return users who have accept request
      */
     @Override
     public List<ApproveCredit> getUserByAcceptRequest() {
@@ -44,7 +47,7 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
     /**
      * Get List user by Signed Credit
      *
-     * @return List Approve Credit
+     * @return users who have signed credit
      */
     @Override
     public List<ApproveCredit> getUserBySignedCredit() {
@@ -56,7 +59,7 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
      *
      * @param userRequestCredit User
      * @param userCreditAmount  The credit amount the user is asking
-     * @return Approve Credit
+     * @return Approve Credit with random values
      */
     @Override
     public ApproveCredit createApproveCredit(UserRequestCredit userRequestCredit, int userCreditAmount) {
@@ -69,7 +72,7 @@ public class ApproveCreditServiceImplementation implements ApproveCreditService 
      * @param contactNumber
      * @param passportData
      * @param fullName
-     * @return
+     * @return users with matches or the entire list of users if there are no values
      */
     @Override
     public List<UserRequestCredit> searchCreditsByPhoneByFullNameByPassportData(String contactNumber, String passportData, String fullName) {

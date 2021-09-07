@@ -14,6 +14,9 @@ import java.util.List;
 
 import static com.testTask.utils.HibernateUtil.getSessionFactory;
 
+/**
+ * Implementation user request credit and putting it into the database
+ */
 @Repository
 public class UserRequestCreditDaoImplementation implements UserRequestCreditDao {
     private static final Logger logger = LoggerFactory.getLogger(UserRequestCreditDao.class);
@@ -36,7 +39,7 @@ public class UserRequestCreditDaoImplementation implements UserRequestCreditDao 
     /**
      * Get List User Request Credit
      *
-     * @return
+     * @return all users from Data Base
      */
     @Override
     public List<UserRequestCredit> getListAllUser() {
@@ -54,7 +57,7 @@ public class UserRequestCreditDaoImplementation implements UserRequestCreditDao 
      * And logged successfully loaded
      *
      * @param id
-     * @return UserRequestCredit
+     * @return one user by id
      */
     @Override
     public UserRequestCredit getUserById(Long id) {

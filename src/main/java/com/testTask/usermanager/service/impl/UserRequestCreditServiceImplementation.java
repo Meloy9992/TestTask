@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementation service user request credit
+ */
 @Service
 public class UserRequestCreditServiceImplementation implements UserRequestCreditService {
 
@@ -36,7 +39,7 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
      * Get one user by Id from Data Base
      *
      * @param id
-     * @return UserRequestCredit
+     * @return one user by id
      */
     @Override
     public UserRequestCredit getUserById(Long id) {
@@ -46,7 +49,7 @@ public class UserRequestCreditServiceImplementation implements UserRequestCredit
     /**
      * Get List User Request Credit
      *
-     * @return
+     * @return all users from Data Base
      */
     @Override
     public List<UserRequestCredit> getListAllUser() {
